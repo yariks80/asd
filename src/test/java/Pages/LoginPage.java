@@ -9,10 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by DELL on 7/16/2016.
  */
-public class LoginPage {
+public class LoginPage extends BasePage{
 
 
-    private  WebDriver driver;
 
     @FindBy(id ="mailbox__login" )
 	private WebElement loginField;
@@ -24,10 +23,11 @@ public class LoginPage {
 	private WebElement button;
 
     public LoginPage(WebDriver driver) {
-        this.driver= driver;
-        PageFactory.initElements(driver,this);
+        super(driver);
 
     }
+
+
     public AfterPage login(String login, String password) throws InterruptedException {
         loginField.sendKeys(login);
         passwordField.sendKeys(password);

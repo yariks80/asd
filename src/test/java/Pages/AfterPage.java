@@ -8,13 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by DELL on 7/16/2016.
  */
-public class AfterPage {
+public class AfterPage  extends BasePage{
 
 	@FindBy(xpath = "//i[@id='PH_user-email']")
 	private WebElement assertElement;
 
     public AfterPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        super(driver);
+
     }
 
     public String getAssertElementText() {

@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
@@ -14,4 +14,23 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '2.53.1'
 // https://mvnrepository.com/artifact/org.testng/testng
     compile group: 'org.testng', name: 'testng', version: '6.9.10'
+}
+
+task firefoxtests(type: Test) {
+    systemProperty "driver","firefox"
+    useTestNG(){
+        suites 'src/test/resources/testng-suite.xml'
+    }
+
+
+}
+
+task chrometests(type: Test) {
+    systemProperty "webdriver.chrome.driver","src\\test\\WebDrivers\\chromedriver.exe"
+    systemProperty "driver","chrome"
+    useTestNG(){
+        suites 'src/test/resources/testng-suite.xml'
+    }
+
+
 }
